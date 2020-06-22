@@ -13,7 +13,7 @@ let id=1
 
 
 exports.postOrder=(req,res,next)=>{
-    const token='cucubsGZTmme0RhOkFeFOr:APA91bHGUpUiZdC6aXxYmgGStYWFr-hslbDBPIey2p0F7s3oensGJmIc8B_k8X5p6xh_8X_N17J0aN1Ev4BoBFOPGUAhWBv-VsF5yZwuJT2cARyZ3NQncL4RMZEaanjX8JsULYY313sf'
+    const token='ccVormQqRFCf3YNdgwSG3X:APA91bE-KTB6mHpsbQXmOdM4oIhOnLDEpS3SWuis3eLHRjiLMEBgFkYi7rUxypyIwxAokLBfTz8dbddpTb-JF1WOM1hWL00PCz3jcheUoQGpeV6BXXQ6GmX_5HN89AM0yDkhCCM1DYm6'
     let msg={
         notification:{
             title:'Hello',
@@ -32,12 +32,19 @@ exports.postOrder=(req,res,next)=>{
     async.map(order,(i,callback)=>{
         const cat_id=i.cat_id
         chkRef.child(mapping[cat_id]).child(i.name).once('value',snap => {
-           if(i.quantity<snap.val().quantity){
+            console.log(i)
+            console.log(snap.val())
+           if(i.quantity<=snap.val().quantity){
+            fail.push({
+                error:0,
+                name:i.name,
+            })
                console.log("OK")
            }
            else{
                flag=1;
                fail.push({
+                   error:1,
                    name:i.name,
                    avail_quantity:snap.val().quantity
                })

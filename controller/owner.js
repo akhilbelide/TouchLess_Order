@@ -9,6 +9,7 @@ exports.getOrders=(req,res,next)=>{
         }
         else{
             const allord=Object.values(snap.val())
+            console.log(allord)
             res.status(200).json({orders:allord})
         }
     })
