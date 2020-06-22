@@ -18,11 +18,9 @@ exports.getOrders=(req,res,next)=>{
 
 exports.modifyOrder=(req,res,next)=>{
     const ord_id=req.body.order_id
-    const modRef=d_b.ref('Orders')
+    const modRef=d_b.ref('Orders').orderByChild('order_id').equalTo(ord_id)
     modRef.update({
-        [ord_id]:{
             order_status:'DONE'
-        }
     }).then(result =>{
         res.status(200).json({message:'success!'})
     })
