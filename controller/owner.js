@@ -3,7 +3,7 @@ const d_b=require('../db_firebase').d_b
 exports.getOrders=(req,res,next)=>{
     
     const allorderRef=d_b.ref('Orders')
-    allorderRef.once('value',(snap,err)=>{
+    allorderRef.orderByChild('order_status').equalTo('PENDING').once('value',(snap,err)=>{
         if(err){
             console.log(err)
         }
