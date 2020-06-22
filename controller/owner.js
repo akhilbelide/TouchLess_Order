@@ -1,6 +1,6 @@
-const d_b=require('../db_firebase').d_b
+import { d_b } from '../db_firebase'
 
-exports.getOrders=(req,res,next)=>{
+export function getOrders(req,res,next){
     
     const allorderRef=d_b.ref('Orders')
     allorderRef.orderByChild('order_status').equalTo('PENDING').once('value',(snap,err)=>{
@@ -16,7 +16,7 @@ exports.getOrders=(req,res,next)=>{
     })
 }
 
-exports.modifyOrder=(req,res,next)=>{
+export function modifyOrder(req,res,next){
     const ord_id=req.body.order_id
     console.log(ord_id)
     console.log()
@@ -32,7 +32,7 @@ exports.modifyOrder=(req,res,next)=>{
 }
 
 
-exports.getSeenOrders=(req,res,next)=>{
+export function getSeenOrders(req,res,next){
     
     const allorderRef=d_b.ref('Orders')
     allorderRef.orderByChild('order_status').equalTo('DONE').once('value',(snap,err)=>{
@@ -40,6 +40,7 @@ exports.getSeenOrders=(req,res,next)=>{
             console.log(err)
         }
         else{
+            if(snap.val())
             const allord=Object.values(snap.val())
             console.log(allord)
 
