@@ -8,7 +8,11 @@ exports.getOrders=(req,res,next)=>{
             console.log(err)
         }
         else{
-            const allord=Object.values(snap.val())
+            let allord;
+            if(snap.val())
+            allord=Object.values(snap.val())
+            else
+            allord=[]
             console.log(allord)
 
             res.status(200).json({orders:allord})
@@ -40,7 +44,11 @@ exports.getSeenOrders=(req,res,next)=>{
             console.log(err)
         }
         else{
-            const allord=Object.values(snap.val())
+            let allord
+            if(snap.val())
+             allord=Object.values(snap.val())
+            else
+            allord = []
             console.log(allord)
 
             res.status(200).json({orders:allord})
