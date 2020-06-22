@@ -20,10 +20,10 @@ exports.postOrder=(req,res,next)=>{
             body:'Hey'
         }
     }
-    // let options={
-    //     priority:"high",
-    //     timeToLive:60*60*24
-    // }
+    let options={
+        priority:"high",
+        android:{sound:"default"}
+    }
     const order=req.body.order
     const chkRef=d_b.ref('Categories')
     let flag=0
@@ -79,7 +79,7 @@ exports.postOrder=(req,res,next)=>{
                         })
                     })
                 })
-                admin.messaging().sendToDevice(token,msg).then(response => {
+                admin.messaging().sendToDevice(token,msg,options).then(response => {
                                     console.log('Notif successfully sent!!')
                                     res.status(200).json({message:"success!",order_id:(id-1),failed:[]})
                                 })
