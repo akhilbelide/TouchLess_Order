@@ -22,8 +22,8 @@ exports.postOrder=(req,res,next)=>{
     const token='ccVormQqRFCf3YNdgwSG3X:APA91bE-KTB6mHpsbQXmOdM4oIhOnLDEpS3SWuis3eLHRjiLMEBgFkYi7rUxypyIwxAokLBfTz8dbddpTb-JF1WOM1hWL00PCz3jcheUoQGpeV6BXXQ6GmX_5HN89AM0yDkhCCM1DYm6'
     let msg={
         notification:{
-            title:'Hello',
-            body:'Hey'
+            title:'New Order has been placed',
+            body:'Click here to view'
         }
     }
     let options={
