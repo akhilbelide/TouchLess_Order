@@ -95,8 +95,8 @@ exports.postOrder=(req,res,next)=>{
         }
     
         if(flag===1){
-            console.log('Hey')
-            console.log(fail)
+            // console.log('Hey')
+            // console.log(fail)
             res.status(200).json({message:"fail!",order_id:0,failed:fail})
         }
     })
