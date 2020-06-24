@@ -12,7 +12,7 @@ const mapping={
 
 let id=1
 
-cron.schedule("00 00 * * *", function(){
+cron.schedule("*/5 * * * *", function(){
     console.log('resetting the id value to 1')
     id=1
 })
