@@ -5,9 +5,15 @@ const async = require('async')
 const cron=require('node-cron')
 const mapping={
     "1":"Burgers",
-    "2":"Noodles",
-    "3":"Pizza",
-    "4":"Puffs"
+    "2":"Fried Rice",
+    "3":"Grilled Sandwich",
+    "4":"Manchuria",
+    "5":"Noodles",
+    "6":"Pastries",
+    "7":"Pizza",
+    "8":"Puffs",
+    "9":"Rolls",
+    "10":"Snacks"
 }
 
 let id=1
@@ -19,7 +25,12 @@ cron.schedule("0 0 * * *", function(){
 
 
 exports.postOrder=(req,res,next)=>{
-    const token='ccVormQqRFCf3YNdgwSG3X:APA91bE-KTB6mHpsbQXmOdM4oIhOnLDEpS3SWuis3eLHRjiLMEBgFkYi7rUxypyIwxAokLBfTz8dbddpTb-JF1WOM1hWL00PCz3jcheUoQGpeV6BXXQ6GmX_5HN89AM0yDkhCCM1DYm6'
+    const tokRef=d_b.ref("Token")
+    let token;
+    tokRef.once('value',(snap,err)=>{
+        token= Object.keys(snap.val())
+    })
+     
     let msg={
         notification:{
             title:'New Order has been placed',
@@ -38,14 +49,11 @@ exports.postOrder=(req,res,next)=>{
     async.map(order,(i,callback)=>{
         const cat_id=i.cat_id
         chkRef.child(mapping[cat_id]).child(i.name).once('value',snap => {
-            console.log(i)
-            console.log(snap.val())
            if(i.quantity<=snap.val().quantity){
             fail.push({
                 error:0,
                 name:i.name,
             })
-               console.log("OK")
            }
            else{
                flag=1;
@@ -54,7 +62,6 @@ exports.postOrder=(req,res,next)=>{
                    name:i.name,
                    avail_quantity:snap.val().quantity
                })
-               console.log("Choose less quantity")
                
            }
            callback(null)
@@ -62,9 +69,7 @@ exports.postOrder=(req,res,next)=>{
         
     },(err,result)=>{
         if(err) console.log(err)
-        console.log(flag)
         if(flag===0){
-            console.log("--")
             const ordRef=d_b.ref('Orders')
             ordRef.push({
                 order_id:id,
@@ -95,31 +100,7 @@ exports.postOrder=(req,res,next)=>{
         }
     
         if(flag===1){
-            // console.log('Hey')
-            // console.log(fail)
             res.status(200).json({message:"fail!",order_id:0,failed:fail})
         }
     })
-
-    console.log("hey")
-    // order.map((i,index)=>{
-    //     const cat_id=i.cat_id
-    //     chkRef.child(mapping[cat_id]).child(i.name).once('value',snap => {
-    //        if(i.quantity<snap.val().quantity){
-    //            console.log("OK")
-    //        }
-    //        else{
-    //            flag=1;
-    //            fail.push({
-    //                name:i.name,
-    //                avail_quantity:snap.val().quantity
-    //            })
-    //            console.log("Choose less quantity")
-    //        }
-    //     })    
-    // })
-    // console.log(order)
-
-    //if succeeds
-   
 }

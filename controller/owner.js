@@ -13,7 +13,6 @@ exports.getOrders=(req,res,next)=>{
             allord=Object.values(snap.val())
             else
             allord=[]
-            console.log(allord)
 
             res.status(200).json({orders:allord})
         }
@@ -22,8 +21,6 @@ exports.getOrders=(req,res,next)=>{
 
 exports.modifyOrder=(req,res,next)=>{
     const ord_id=req.body.order_id
-    console.log(ord_id)
-    console.log()
     const modRef=d_b.ref('Orders').orderByChild('order_id').equalTo(req.body.order_id)
     modRef.once('value',snap =>{
         const k=Object.keys(snap.val())
@@ -49,7 +46,6 @@ exports.getSeenOrders=(req,res,next)=>{
              allord=Object.values(snap.val())
             else
             allord = []
-            console.log(allord)
 
             res.status(200).json({orders:allord})
         }
