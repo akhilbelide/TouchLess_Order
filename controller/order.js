@@ -5,15 +5,17 @@ const async = require('async')
 const cron=require('node-cron')
 const mapping={
     "1":"Burgers",
-    "2":"Fried Rice",
-    "3":"Grilled Sandwich",
-    "4":"Manchuria",
-    "5":"Noodles",
-    "6":"Pastries",
-    "7":"Pizza",
-    "8":"Puffs",
-    "9":"Rolls",
-    "10":"Snacks"
+    "2":"Cheese Wheel",
+    "3":"Cool Drinks",
+    "4":"Fried Rice",
+    "5":"Grilled Sandwich",
+    "6":"Manchuria",
+    "7":"Noodles",
+    "8":"Pastries",
+    "9":"Pizza",
+    "10":"Puffs",
+    "11":"Rolls",
+    "12":"Snacks"
 }
 
 let id=1
