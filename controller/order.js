@@ -20,10 +20,10 @@ const mapping={
 
 let id=100
 
-cron.schedule("0 0 * * *", function(){
-    console.log('resetting the id value to 100')
-    id=100
-})
+// cron.schedule("0 0 * * *", function(){
+//     console.log('resetting the id value to 100')
+//     id=100
+// })
 
 
 exports.postOrder=(req,res,next)=>{
