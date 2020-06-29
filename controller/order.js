@@ -18,11 +18,11 @@ const mapping={
     "12":"Snacks"
 }
 
-let id=1
+let id=100
 
 cron.schedule("0 0 * * *", function(){
-    console.log('resetting the id value to 1')
-    id=1
+    console.log('resetting the id value to 100')
+    id=100
 })
 
 
