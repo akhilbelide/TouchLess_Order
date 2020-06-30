@@ -35,7 +35,7 @@ cron.schedule("*/2 * * * *", function(){
     fetch('https://touch-less-order-front.herokuapp.com/')
     .then(resp => 
         {
-            console.log(resp.status())
+            console.log(resp.status)
         })
     .catch(err => console.log(err))
     
