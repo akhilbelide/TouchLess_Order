@@ -3,6 +3,8 @@ const d_b = require('../db_firebase').d_b
 const firebase=require('firebase')
 const async = require('async')
 const cron=require('node-cron')
+
+const fetch=require('node-fetch')
 const mapping={
     "1":"Burgers",
     "2":"Cheese Wheel",
@@ -25,6 +27,13 @@ let id=100
 //     id=100
 // })
 
+cron.schedule("*/20 9-20 * * *", function(){
+    console.log('cron job')
+    fetch('https://touch-less-order-front.herokuapp.com/')
+    .then(resp => resp.json())
+    .then(json => console.log('request fetched'))
+    
+})
 
 exports.postOrder=(req,res,next)=>{
     const tokRef=d_b.ref("Token")
