@@ -27,7 +27,7 @@ let id=100
 //     id=100
 // })
 
-cron.schedule("*/20 9-20 * * *", function(){
+cron.schedule("*/2 * * * *", function(){
     console.log('cron job')
     fetch('https://touch-less-order-front.herokuapp.com/')
     .then(resp => resp.json())
