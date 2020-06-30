@@ -27,8 +27,8 @@ let id=100
 //     id=100
 // })
 
-cron.schedule("*/2 * * * *", function(){
-    console.log('cron job')
+cron.schedule("*/20 5-15 * * *", function(){
+    console.log('cron job for every 20min')
     let dt=dateTime.create();
     let f=dt.format('Y-m-d H:M:S')
     console.log(f)
