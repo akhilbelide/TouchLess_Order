@@ -33,8 +33,10 @@ cron.schedule("*/2 * * * *", function(){
     let f=dt.format('Y-m-d H:M:S')
     console.log(f)
     fetch('https://touch-less-order-front.herokuapp.com/')
-    .then(resp => resp.json())
-    .then(json => console.log('request fetched'))
+    .then(resp => 
+        {
+            console.log(resp.status())
+        })
     .catch(err => console.log(err))
     
 })
