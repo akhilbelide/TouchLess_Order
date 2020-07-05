@@ -22,24 +22,14 @@ const mapping={
 
 let id=100
 
-// cron.schedule("0 0 * * *", function(){
-//     console.log('resetting the id value to 100')
-//     id=100
-// })
-
-cron.schedule("*/20 5-15 * * *", function(){
-    console.log('cron job for every 20min')
-    let dt=dateTime.create();
-    let f=dt.format('Y-m-d H:M:S')
-    console.log(f)
-    fetch('https://touch-less-order-front.herokuapp.com/')
-    .then(resp => 
-        {
-            console.log(resp.status)
-        })
-    .catch(err => console.log(err))
-    
+cron.schedule("0 0 * * *", function(){
+    console.log('resetting the id value to 100')
+    id=100
+    const ordRef=d_b.ref('Orders')
+    ordRef.remove()
 })
+
+
 
 exports.postOrder=(req,res,next)=>{
     const tokRef=d_b.ref("Token")

@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "start:dev": "nodemon app.js"
+    
   },
   "author": "AKHIL",
   "license": "ISC",
@@ -18,9 +19,11 @@
     "fcm-node": "^1.5.2",
     "firebase": "^7.15.1",
     "firebase-admin": "^8.12.1",
+    "netlify-lambda": "^1.6.3",
     "node-cron": "^2.0.3",
     "node-datetime": "^2.1.2",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "serverless-http": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
